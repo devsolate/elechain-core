@@ -65,7 +65,8 @@ const register = async (req, res) => {
     const {
         username,
         password,
-        name
+        name,
+        accountId
     } = req.body
 
     try {
@@ -74,7 +75,7 @@ const register = async (req, res) => {
             username,
             password,
             name,
-            accountId: generateKeyPair.publicKey()
+            accountId: accountId
         })
 
         res.json({
@@ -83,8 +84,7 @@ const register = async (req, res) => {
                 accountId: user.accountId,
                 username: user.username,
                 name: user.name
-            },
-            secret: generateKeyPair.secret()
+            }
         })
     } catch (error) {
         res.status(400).json({

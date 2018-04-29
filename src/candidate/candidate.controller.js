@@ -12,7 +12,11 @@ const list = async (req, res) => {
             candidates: candidates
         })
     } catch(error) {
-
+        console.log(error)
+        return res.status(400).json({
+            status: 400,
+            message: error
+        })
     }
 }
 
@@ -23,8 +27,14 @@ const register = async (req, res) => {
         const admins = await User.find({ isAdmin: true })
 
         // Create new wallet with multiple signature key with candidate and admin
+        const adminsWithAccountId = admins.filter((item) => item.accountId)
+        
     } catch(error) {
-
+        console.log(error)
+        return res.status(400).json({
+            status: 400,
+            message: error
+        })
     }
 }
 

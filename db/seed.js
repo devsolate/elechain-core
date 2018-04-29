@@ -13,7 +13,8 @@ const run = async () => {
         const user = await User.create({
             username: "admin",
             password: "admin1234",
-            name: "SuperAdmin"
+            name: "SuperAdmin",
+            isAdmin: true
         })
 
         console.log("create super admin succes")

@@ -4,7 +4,7 @@ const express = require('express')
 const controller = require('./admin.controller')
 const router = express.Router()
 
-router.route('/list')
+router.route('/')
     .get(controller.list)
 
 router.route('/add')

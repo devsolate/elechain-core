@@ -11,6 +11,18 @@ const list = async (req, res) => {
                 message: 'No permission'
             })
         }
+
+        const admins = await User.find({ isAdmin: true })
+        return res.json({
+            status: 200,
+            admins: admins.map((item) => {
+                return {
+                    _id: item._id,
+                    username: item.username,
+                    accountId: item.accountId
+                }
+            })
+        })
     } catch(error){
         return res.status(401).json({
             status: 401,
@@ -28,7 +40,17 @@ const add = async (req, res) => {
                 message: 'No permission'
             })
         }
+
+        const { username } = req.body
+
+        const user = await User.findOne({ username: username })
+        await user.update({ isAdmin: true })
+
+        return res.json({
+            status: 200
+        })
     } catch(error){
+        console.log(error)
         return res.status(401).json({
             status: 401,
             message: error

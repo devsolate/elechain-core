@@ -14,7 +14,8 @@ const run = async () => {
             username: "admin",
             password: "admin1234",
             name: "SuperAdmin",
-            isAdmin: true
+            isAdmin: true,
+            accountId: "GA5PSJHGWITNDQGJQSRXD5DJVDAUUFB66AUPQIIGPKQTRZLWNZQ54QGS"
         })
 
         console.log("create super admin succes")

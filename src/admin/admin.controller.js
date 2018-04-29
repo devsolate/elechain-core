@@ -75,9 +75,33 @@ const remove = async (req, res) => {
     }
 }
 
+// Approve Candidate
+const approve = (req, res) => {
+    try {
+        const isAdmin = req.user
+        if(!isAdmin) {
+            return res.status(401).json({
+                status: 401,
+                message: 'No permission'
+            })
+        }
+
+        const { candidateId } = req.body
+        
+        
+    } catch(error){
+        return res.status(401).json({
+            status: 401,
+            message: error
+        })
+    }
+}
+
+
 module.exports = {
     list,
     add,
-    remove
+    remove,
+    approve
 }
 

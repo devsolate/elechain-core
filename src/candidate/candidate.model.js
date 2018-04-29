@@ -8,6 +8,9 @@ const candidateSchema = new mongoose.Schema({
   accountId: String,
   userId: { type: Schema.Types.ObjectId, ref: 'User' },
   eventId: { type: Schema.Types.ObjectId, ref: 'ElectionEvent' },
+  isActive: Boolean,
+  XDR: String,
+  signer: Array
 }, { timestamps: true });
 
 const candidate = mongoose.model('Candidate', candidateSchema);

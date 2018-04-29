@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 
+router.use('/event', require('./event/event.route'));
+router.use('/candidate', require('./candidate/candidate.route'));
 router.use('/', require('./user/user.route'));
 
 module.exports = router;

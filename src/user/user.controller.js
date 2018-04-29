@@ -5,7 +5,8 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const Constants = require('../constants');
 const moment = require('moment');
-const Token = require('../token/token.model')
+const Token = require('../token/token.model');
+const StellarSdk = require('stellar-sdk');
 
 const login = async (req, res) => {
     const {
@@ -61,17 +62,27 @@ const login = async (req, res) => {
 const register = async (req, res) => {
     const {
         username,
-        password
+        password,
+        name
     } = req.body
 
     try {
+        const generateKeyPair = StellarSdk.Keypair.random()
         const user = await User.create({
             username,
-            password
+            password,
+            name,
+            accountId: generateKeyPair.publicKey()
         })
+
         res.json({
             status: 200,
-            user
+            user: {
+                accountId: user.accountId,
+                username: user.username,
+                name: user.name
+            },
+            secret: generateKeyPair.secret()
         })
     } catch (error) {
         res.status(400).json({

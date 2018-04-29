@@ -5,11 +5,9 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
   password: String,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-  facebook: String,
-  google: String,
-  tokens: Array,
+  accountId: String,
+  name: String,
+  isAdmin: Boolean
 }, { timestamps: true });
 
 /**

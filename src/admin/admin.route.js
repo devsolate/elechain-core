@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express')
-const controller = require('./candidate.controller')
+const controller = require('./admin.controller')
 const router = express.Router()
 
 router.route('/list')

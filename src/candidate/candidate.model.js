@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 const candidateSchema = new mongoose.Schema({
   name: { type: String, unique: true },
   accountId: String,
-  userId: { type: Schema.Types.ObjectId, ref: 'User' }
+  userId: { type: Schema.Types.ObjectId, ref: 'User' },
+  eventId: { type: Schema.Types.ObjectId, ref: 'ElectionEvent' },
 }, { timestamps: true });
 
 const candidate = mongoose.model('Candidate', candidateSchema);
